@@ -29,18 +29,18 @@ window.addEventListener('load', async () => {
 var ethPrice;
 
 
-// 0x8b7cdf6a6a2c17948828572b22df2c9f51fe748c masterchef
-const stakeAddress = "0x256D99093CCd8DF7311FCB1a0E1f495f4745F49b";
+// 0xD03216CC8EaE6a1522b784Ad3FA66424F227dA62 masterchef
+const stakeAddress = "0xD03216CC8EaE6a1522b784Ad3FA66424F227dA62";
 const UniPool= "0x93c03dae6efabf1e11953a5b682643b3f8425580";
-const RewardToken="0x8631b017a9B84BA963EcC621e756930B2A7d2ACa";
-const UniswapFactory="0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f";
+const RewardToken="0xed907a2af9f64507e3b8b8f0c5c4fd086d1986a2";
+const UniswapFactory="0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 // 0xb2dbf14d0b47ed3ba02bdb7c954e05a72deb7544 Reward
 // 0x2cea677e38f16a3016cab43b533efda0458af0e6 staking token
-const tokenAddress = ["0x924027b8A37b8b4096CBA6974c72A8d2301f387c",'0x93c03dae6efabf1e11953a5b682643b3f8425580',"0x4f96fe3b7a6cf9725f59d353f723c1bdb64ca6aa","0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"];
-var wethAddres = "0xd0A1E359811322d97991E03f863a0C30C2cF029C"
+const tokenAddress = ["0xfdfd27ae39cebefdbaac8615f18aa68ddd0f15f5"];
+var wethAddres = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
 
-const networkId = 42; //!mainnet network id
-const ETH_BLOCK_TIME = 4;
+const networkId = 56; //!bsc mainnet network id
+const ETH_BLOCK_TIME = 3;
 const BLOCKS_PER_YEAR = (60 / ETH_BLOCK_TIME) * 60 * 24 * 365;
 
 let userStake = 0;
@@ -65,7 +65,7 @@ async function callCheck() {
     window.walletAddress = address[0];
     
     if (id !== networkId) {
-        $("#notifictionMessage").html("Please Select Kovan Network")
+        $("#notifictionMessage").html("Please Select BSC Network")
         $(".tipBox").css("opacity", "1");
         return false;
     }

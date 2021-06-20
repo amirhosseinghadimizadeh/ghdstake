@@ -5,24 +5,5 @@
         "name":"GHD",
         "logo":"images/Giftedhands.png",
         "lpstatus":false
-    },
-    {
-        "index":"1",
-        "name":"GHD-ETH LP",
-        "logo":"images/logo_next.png",
-        "lpstatus":true
-    } ,
-    {
-        "index":"2",
-        "name":"DAI",
-        "logo":"images/dai.png",
-        "lpstatus":false
-    }  
-    ,
-    {
-        "index":"3",
-        "name":"UNI",
-        "logo":"images/uni.png",
-        "lpstatus":false
-    }  
+    }
 ]

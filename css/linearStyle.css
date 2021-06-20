@@ -542,7 +542,8 @@ body::-webkit-scrollbar-corner, div::-webkit-scrollbar-corner, html::-webkit-scr
         height: 120px
     }
     #mainPage .mainContent .bedienfeldBox .stake.open, #mainPage .mainContent .bedienfeldBox .unstake.open {
-        width: 100%!important
+        width: 100%!important;
+        height:298px !important;
     }
     #mainPage .mainContent .bedienfeldBox .stake.open .floatTitle, #mainPage .mainContent .bedienfeldBox .unstake.open .floatTitle {
         top: 134px

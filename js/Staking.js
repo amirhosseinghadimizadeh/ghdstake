@@ -188,9 +188,9 @@ async function calcUserBalance() {
         console.log(totalUSDInUniPool+ " totalUSDInUniPool");
         var stakingTokenPrice;
         var rewardTokenPrice;
-        $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=giftedhands&vs_currencies=usd`,
+        await $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=giftedhands&vs_currencies=usd`,
         async function (data) {
-              rewardTokenPrice = Object.values(data)[0].usd;
+              rewardTokenPrice = await Object.values(data)[0].usd;
         });
         if(lpToken[userStakedTokenIndex]==true){
             totalETHInUniPoolLp = Number(window.web3.utils.fromWei(await window.wethInstance.methods.balanceOf(tokenInstance[userStakedTokenIndex]._address).call()));

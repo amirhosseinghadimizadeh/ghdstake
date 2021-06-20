@@ -5,5 +5,11 @@
         "name":"GHD",
         "logo":"images/Giftedhands.png",
         "lpstatus":false
+    },
+    {
+        "index":"1",
+        "name":"GHD-WGHD",
+        "logo":"images/dodolp.svg",
+        "lpstatus":false
     }
 ]

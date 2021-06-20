@@ -36,7 +36,7 @@ const RewardToken="0xed907a2af9f64507e3b8b8f0c5c4fd086d1986a2";
 const UniswapFactory="0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 // 0xb2dbf14d0b47ed3ba02bdb7c954e05a72deb7544 Reward
 // 0x2cea677e38f16a3016cab43b533efda0458af0e6 staking token
-const tokenAddress = ["0xfdfd27ae39cebefdbaac8615f18aa68ddd0f15f5"];
+const tokenAddress = ["0xfdfd27ae39cebefdbaac8615f18aa68ddd0f15f5","0x8f589cc1afb466ed9edc8cf2281ab5b1de75a005"];
 var wethAddres = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
 
 const networkId = 56; //!bsc mainnet network id

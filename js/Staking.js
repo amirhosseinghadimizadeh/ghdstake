@@ -205,6 +205,9 @@ async function calcUserBalance() {
              stakingTokenPrice = totalUSDInUniPool / totalsushiInUniPool;
             console.log(stakingTokenPrice+ " stakingTokenPrice");
         }
+        if(userStakedTokenIndex==1){
+            stakingTokenPrice=rewardTokenPrice*2;
+        }
         console.log(rewardTokenPrice+ " rewardTokenPrice");
         const sushiPerBlock=await StakeInstance.methods.sushiPerBlock().call();
         const totalAllocationPoint=await StakeInstance.methods.totalAllocPoint().call();

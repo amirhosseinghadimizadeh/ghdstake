@@ -164,7 +164,7 @@ function tokenToBeStaked(id) {
 async function calcUserBalance() {
     let address = window.walletAddress;
     var totalRewardAvailable = Number(window.web3.utils.fromWei(await window.StakeInstance.methods.pendingSushi(userStakedTokenIndex, address).call()));
-    $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`,
+    $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`,
     async function (data) {
         ethPrice = Object.values(data)[0].usd;
         tokenLiquidityPool=await window.FactoryInstance.methods.getPair(tokenInstance[userStakedTokenIndex]._address,wethAddres).call(); 
@@ -176,9 +176,9 @@ async function calcUserBalance() {
         console.log(totalETHInUniPool+ " totalETHInUniPool");
         console.log(totalLPSupply+ " totalLPSupply");
 
-        tokenLiquidityPoolReward=await window.FactoryInstance.methods.getPair(RewardToken,wethAddres).call(); 
+        tokenLiquidityPoolReward=await window.FactoryInstance.methods.getPair(tokenInstance[0],wethAddres).call(); 
         totalETHInUniPoolReward = Number(window.web3.utils.fromWei(await window.wethInstance.methods.balanceOf(tokenLiquidityPoolReward).call()));
-        totalMobiFiInUniPoolReward = Number(window.web3.utils.fromWei(await RewardInstance.methods.balanceOf(tokenLiquidityPoolReward).call()));
+        totalMobiFiInUniPoolReward = Number(window.web3.utils.fromWei(await tokenInstance[0].methods.balanceOf(tokenLiquidityPoolReward).call()));
         var totalUSDInUniPoolReward = ethPrice * totalETHInUniPoolReward;
         var totalUSDInUniPool = ethPrice * totalETHInUniPool;
         console.log(tokenLiquidityPoolReward+" tokenLiquidityPoolReward");

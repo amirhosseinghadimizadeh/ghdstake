@@ -48,7 +48,7 @@ let userBalance = 0;
 let userApproved = 0;
 let totalStakeAmount = 0;
 let totalETHInUniPool = 0;
-let totalMobiFiInUniPool = 0;
+let totalsushiInUniPool = 0;
 let totalLPSupply = 0;
 let tokens = '';
 let tokenInstance = [];
@@ -169,21 +169,22 @@ async function calcUserBalance() {
         ethPrice = Object.values(data)[0].usd;
         tokenLiquidityPool=await window.FactoryInstance.methods.getPair(tokenInstance[userStakedTokenIndex]._address,wethAddres).call(); 
         totalETHInUniPool = Number(window.web3.utils.fromWei(await window.wethInstance.methods.balanceOf(tokenLiquidityPool).call()));
-        totalMobiFiInUniPool = Number(window.web3.utils.fromWei(await tokenInstance[userStakedTokenIndex].methods.balanceOf(tokenLiquidityPool).call()));
+        totalsushiInUniPool = Number(window.web3.utils.fromWei(await tokenInstance[userStakedTokenIndex].methods.balanceOf(tokenLiquidityPool).call()));
         totalLPSupply = Number(window.web3.utils.fromWei(await tokenInstance[userStakedTokenIndex].methods.totalSupply().call()));
         console.log(ethPrice+" ethPrice");
         console.log(tokenLiquidityPool+ " tokenLiquidityPool");
         console.log(totalETHInUniPool+ " totalETHInUniPool");
         console.log(totalLPSupply+ " totalLPSupply");
+        console.log(totalsushiInUniPool+ " totalsushiInUniPool");
 
         tokenLiquidityPoolReward=await window.FactoryInstance.methods.getPair(RewardToken,wethAddres).call(); 
         totalETHInUniPoolReward = Number(window.web3.utils.fromWei(await window.wethInstance.methods.balanceOf(tokenLiquidityPoolReward).call()));
-        totalMobiFiInUniPoolReward = Number(window.web3.utils.fromWei(await RewardInstance.methods.balanceOf(tokenLiquidityPoolReward).call()));
+        totalsushiInUniPoolReward = Number(window.web3.utils.fromWei(await RewardInstance.methods.balanceOf(tokenLiquidityPoolReward).call()));
         var totalUSDInUniPoolReward = ethPrice * totalETHInUniPoolReward;
         var totalUSDInUniPool = ethPrice * totalETHInUniPool;
         console.log(tokenLiquidityPoolReward+" tokenLiquidityPoolReward");
         console.log(totalETHInUniPoolReward+" totalETHInUniPoolReward");
-        console.log(totalMobiFiInUniPoolReward+" totalMobiFiInUniPoolReward");
+        console.log(totalsushiInUniPoolReward+" totalsushiInUniPoolReward");
         console.log(totalUSDInUniPoolReward+ " totalUSDInUniPoolReward");
         console.log(totalUSDInUniPool+ " totalUSDInUniPool");
         var stakingTokenPrice;
@@ -201,7 +202,7 @@ async function calcUserBalance() {
             console.log(stakingTokenPrice+ " stakingTokenPrice");
         }
         else{
-             stakingTokenPrice = totalUSDInUniPool / totalMobiFiInUniPool;
+             stakingTokenPrice = totalUSDInUniPool / totalsushiInUniPool;
             console.log(stakingTokenPrice+ " stakingTokenPrice");
         }
         console.log(rewardTokenPrice+ " rewardTokenPrice");

@@ -250,19 +250,19 @@ body::-webkit-scrollbar-corner, div::-webkit-scrollbar-corner, html::-webkit-scr
 }
 
 #mainPage .mainContent .bedienfeldBox .stake {
-    background-color: #509c5a
+    background-color: #509c5a important
 }
 
 #mainPage .mainContent .bedienfeldBox .stake:hover:not(.open) {
-    background-color: #3b7442
+    background-color: #3b7442 important
 }
 
 #mainPage .mainContent .bedienfeldBox .unstake {
-    background-color: #60bd6c
+    background-color: #60bd6c important
 }
 
 #mainPage .mainContent .bedienfeldBox .unstake:hover:not(.open) {
-    background-color: #3b7442
+    background-color: #3b7442 !important
 }
 
 #mainPage .mainContent .bedienfeldBox .stake, #mainPage .mainContent .bedienfeldBox .unstake {

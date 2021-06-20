@@ -11,5 +11,11 @@
         "name":"GHD-WGHD",
         "logo":"images/dodolp.svg",
         "lpstatus":false
+    },
+    {
+        "index":"3",
+        "name":"GHD-BNB",
+        "logo":"images/pancakelp.png",
+        "lpstatus":false
     }
 ]

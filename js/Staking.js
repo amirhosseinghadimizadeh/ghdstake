@@ -188,7 +188,7 @@ async function calcUserBalance() {
         console.log(totalUSDInUniPool+ " totalUSDInUniPool");
         var stakingTokenPrice;
         var rewardTokenPrice;
-        $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`,
+        $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=giftedhands&vs_currencies=usd`,
         async function (data) {
               rewardTokenPrice = Object.values(data)[0].usd;
         });

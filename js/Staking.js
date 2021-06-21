@@ -87,10 +87,11 @@ async function callCheck() {
 async function balanceChecker(index) {
     
     let address = window.walletAddress;
+    var decimals=await tokenInstance[index].methods.decimals().call();
     userStake = window.web3.utils.fromWei((await window.StakeInstance.methods.userInfo(index, address).call()).amount);
     userBalance = window.web3.utils.fromWei(await tokenInstance[index].methods.balanceOf(address).call());
     userApproved = BigInt(await tokenInstance[index].methods.allowance(address, stakeAddress).call());
-    totalStakeAmount = window.web3.utils.fromWei(await tokenInstance[index].methods.balanceOf(stakeAddress).call());
+    totalStakeAmount =await tokenInstance[index].methods.balanceOf(stakeAddress).call()/10**decimals
     $("#userBalance").html(Number(userBalance).toFixed(10));
     $("#userStake").html(Number(userStake).toFixed(10));
     $("#userTotal").html((Number(userBalance) + Number(userStake)).toFixed(10));

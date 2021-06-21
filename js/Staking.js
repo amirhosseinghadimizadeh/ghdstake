@@ -137,8 +137,8 @@ function tokenToBeStaked(id) {
     var symbol = document.getElementById(id).innerHTML;
     var index;
     console.log(id," id");
-    if(id<=10){
-        index= id;
+    if(id.substr(-2)<=10){
+        index= "avltoken10".substr(-2);
         console.log(id," index +10");
     }
     else{

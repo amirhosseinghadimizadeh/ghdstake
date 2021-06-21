@@ -92,10 +92,10 @@ async function balanceChecker(index) {
     userBalance = window.web3.utils.fromWei(await tokenInstance[index].methods.balanceOf(address).call());
     userApproved = BigInt(await tokenInstance[index].methods.allowance(address, stakeAddress).call());
     totalStakeAmount =await tokenInstance[index].methods.balanceOf(stakeAddress).call()/10**decimals
-    $("#userBalance").html(Number(userBalance).toFixed(10));
-    $("#userStake").html(Number(userStake).toFixed(10));
-    $("#userTotal").html((Number(userBalance) + Number(userStake)).toFixed(10));
-    $("#totalStakeAmount").html(Number(totalStakeAmount).toFixed(10));
+    $("#userBalance").html(Number(userBalance).toFixed(8));
+    $("#userStake").html(Number(userStake).toFixed(8));
+    $("#userTotal").html((Number(userBalance) + Number(userStake)).toFixed(8));
+    $("#totalStakeAmount").html(Number(totalStakeAmount).toFixed(8));
 
     calcUserBalance();
 }

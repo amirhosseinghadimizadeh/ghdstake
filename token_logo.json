@@ -59,6 +59,11 @@
         "name":"BUNNY",
         "logo":"images/bunny.png",
         "lpstatus":false
+    }, {
+        "index":"10",
+        "name":"USDT",
+        "logo":"images/usdt.png",
+        "lpstatus":false
     }
     
 ]

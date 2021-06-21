@@ -517,9 +517,6 @@ $(document).ready(function () {
             $("#stakeAmount").val(userBalance);
 
         }
-        if (Number($(this).val()) > MAX_AMOUNT) {
-            $("stakeAmount").val(MAX_AMOUNT);
-        }
     })
 })
 

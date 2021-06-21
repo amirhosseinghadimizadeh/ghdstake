@@ -35,5 +35,11 @@
         "name":"CAKE",
         "logo":"images/pancakelp.png",
         "lpstatus":false
+    },
+    {
+        "index":"6",
+        "name":"BTCB",
+        "logo":"images/btcb.png",
+        "lpstatus":false
     }
 ]

@@ -279,7 +279,7 @@ async function maxUnStakeAmount() {
 async function approve() {
     let a = $("#stakeAmount").val();
     let address = window.walletAddress;
-    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
+    var decimals=18;
     if (Number(a) > userBalance) {
         return false;
     }
@@ -300,8 +300,7 @@ async function approve() {
         }
         a = (a)*(10**decimals);
 
-        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**18*29999999999999999999999999999999999999
-            ).send({ from: address, value: 0, })
+        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**decimals).send({ from: address, value: 0, })
             .on('transactionHash', (hash) => {
                 showLoader("Approving Tokens")
             })

@@ -25,11 +25,11 @@ window.addEventListener('load', async () => {
         $("#notifictionMessage").html("Metamask is not Installed")
         $(".tipBox").css("opacity", "1");
     }
+    if(provider==true){
+        await callCheck();
+         console.log("provider set");
+      }
 });
- if(provider==true){
-   await callCheck();
-    console.log("provider set");
- }
 var ethPrice;
 
 

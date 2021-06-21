@@ -136,10 +136,7 @@ async function tokenList() {
 function tokenToBeStaked(id) {
     var symbol = document.getElementById(id).innerHTML;
     var index;
-    index= id.substr(-1);
-    if(id<=10){
-        index= id.substr(-2);
-    }
+    index= id;
 
     var stakeTokenAddress = tokenAddress[index];
     for (var i = 0; i < tokenAddress.length; i++) {

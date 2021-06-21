@@ -47,5 +47,12 @@
         "name":"ETH",
         "logo":"images/eth.png",
         "lpstatus":false
+    },
+    {
+        "index":"7",
+        "name":"BUSD",
+        "logo":"images/busd.png",
+        "lpstatus":false
     }
+    
 ]

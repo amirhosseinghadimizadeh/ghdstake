@@ -23,5 +23,11 @@
         "name":"NULS",
         "logo":"images/Nuls.webp",
         "lpstatus":false
+    },
+    {
+        "index":"3",
+        "name":"NULS-BNB",
+        "logo":"images/pancakelp.png",
+        "lpstatus":true
     }
 ]

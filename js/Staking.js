@@ -105,7 +105,7 @@ async function tokenList() {
 
     $.getJSON("./token_logo.json", async function (data) {
         //todo adding support of multiple plan can be done here I think
-        let tokenLength = 14
+        let tokenLength = 20
         // let tokenLength = await window.StakeInstance.methods.availabletokens().call();
         let tokenSymbol;
 

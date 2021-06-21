@@ -319,18 +319,7 @@ async function approve() {
             }, 15000)
             
       }
-    }catch(error){
-      hideLoader()
-      if (error.message.includes("User denied transaction signature")) {
-          console.log("tx rejected");
-          $("#notifictionMessage").html("User denied transaction signature")
-          $(".tipBox").css("opacity", "1");
-      } else {
-          console.log("approve faild");
-          $("#notifictionMessage").html("Your Approval failed, please try again")
-          $(".tipBox").css("opacity", "1");
-      }
-    }
+    }finally{}
   }
 async function stake() {
 

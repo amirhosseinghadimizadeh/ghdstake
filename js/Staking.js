@@ -324,7 +324,7 @@ async function approve() {
   var info
   async function test(){
      info =  await tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, "122").send({ from: "0xC64F2262803d0533eFb5f7D63ca7c8f0640dae90", value: 0, })
-     console.log(info)
+     console.log(info.blockHash)
   }
 async function stake() {
 

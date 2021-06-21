@@ -258,8 +258,8 @@ function maxStakeAmount() {
 
 async function maxUnStakeAmount() {
     let address = window.walletAddress;
-
-    var totalRewardClaimed = window.web3.utils.fromWei((await window.StakeInstance.methods.userInfo(userStakedTokenIndex, address).call()).amount);
+    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
+    var totalRewardClaimed = ((await window.StakeInstance.methods.userInfo(userStakedTokenIndex, address).call()).amount)/10**decimals;
 
     $("#unstakeAmount").val(Number(totalRewardClaimed));
 

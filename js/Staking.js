@@ -277,6 +277,7 @@ async function maxUnStakeAmount() {
 }
 
 async function approve() {
+  try{
     let a = $("#stakeAmount").val();
     let address = window.walletAddress;
     var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
@@ -300,29 +301,26 @@ async function approve() {
         }
         a = (a)*(10**decimals);
 
-        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**decimals).send({ from: address, value: 0, })
-            .on('transactionHash', (hash) => {
-                showLoader("Approving Tokens")
-            })
-            .on('receipt', (receipt) => {
-                hideLoader();
-                $("#notifictionMessage").html("Token Is Approved You can Stake Now")
-                $(".tipBox").css("opacity", "1");
-                $("#stakeAmount").attr("disabled", "true");
-                $("#maxButton").hide();
-                $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
-
-            }).on("error", (error) => {
-                hideLoader()
-                if (error.message.includes("User denied transaction signature")) {
-                    $("#notifictionMessage").html("User denied transaction signature")
-                    $(".tipBox").css("opacity", "1");
-                } else {
-                    $("#notifictionMessage").html("Your Approval failed, please try again")
-                    $(".tipBox").css("opacity", "1");
-                }
-            })
+        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**decimals).send({ from: address, value: 0, }).then(function(result){
+            hideLoader();
+            $("#notifictionMessage").html("Token Is Approved You can Stake Now")
+            $(".tipBox").css("opacity", "1");
+            $("#stakeAmount").attr("disabled", "true");
+            $("#maxButton").hide();
+            $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
+        })
+          
     }
+  }catch(error){
+    hideLoader()
+    if (error.message.includes("User denied transaction signature")) {
+        $("#notifictionMessage").html("User denied transaction signature")
+        $(".tipBox").css("opacity", "1");
+    } else {
+        $("#notifictionMessage").html("Your Approval failed, please try again")
+        $(".tipBox").css("opacity", "1");
+    }
+  }
 }
 
 async function stake() {
@@ -331,6 +329,21 @@ async function stake() {
     let address = window.walletAddress;
     let originalValue = a;
     var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
+    a = (a)*(10**decimals);
+    window.StakeInstance.methods.deposit(userStakedTokenIndex, a).send({ from: address, value: 0, })
+        .on('transactionHash', (hash) => {
+            showLoader("Staking")
+        })
+        .on('receipt', (receipt) => {
+            $("#stakeAmount").removeAttr("disabled");
+            $("#stakeAmount").val("0");
+            $("#stakeButtonDiv").html("<div class=\"maxButton max button\" onclick=\"approve();\"><span\n" +
+                "                                        class=\"label\">Approve</span></div>")
+
+            setTimeout(() => {
+                $("#notifictionMessage").html(originalValue + " Token Staked Successfully")
+                $(".tipBox").css("opacity", "1");
+                hideLo tokenInstance[userStakedTokenIndex].methods.decimals().call();
     a = (a)*(10**decimals);
     window.StakeInstance.methods.deposit(userStakedTokenIndex, a).send({ from: address, value: 0, })
         .on('transactionHash', (hash) => {
@@ -516,6 +529,9 @@ $(document).ready(function () {
         if (Number($(this).val()) > userBalance) {
             $("#stakeAmount").val(userBalance);
 
+        }
+        if (Number($(this).val()) > MAX_AMOUNT) {
+            $("stakeAmount").val(MAX_AMOUNT);
         }
     })
 })

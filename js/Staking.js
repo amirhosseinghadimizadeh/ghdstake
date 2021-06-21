@@ -269,10 +269,11 @@ async function maxUnStakeAmount() {
 async function approve() {
     let a = $("#stakeAmount").val();
     let address = window.walletAddress;
+    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
     if (Number(a) > userBalance) {
         return false;
     }
-    a = window.web3.utils.toWei(a);
+    a = (a)*(10**decimals);
     if (userApproved >= a) {
         $("#notifictionMessage").html("Token Is Approved You can Stake Now")
         $(".tipBox").css("opacity", "1");

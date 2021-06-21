@@ -29,5 +29,11 @@
         "name":"NULS-BNB",
         "logo":"images/pancakelp.png",
         "lpstatus":true
+    },
+    {
+        "index":"5",
+        "name":"CAKE",
+        "logo":"images/pancakelp.png",
+        "lpstatus":false
     }
 ]

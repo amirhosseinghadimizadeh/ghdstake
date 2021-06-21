@@ -276,56 +276,55 @@ async function maxUnStakeAmount() {
 
 }
 
-
 async function approve() {
-    try{
-      let a = $("#stakeAmount").val();
-      let address = window.walletAddress;
-      var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
-      if (Number(a) > userBalance) {
-          return false;
-      }
-      a = (a)*(10**decimals);
-      if (userApproved >= a) {
-          $("#notifictionMessage").html("Token Is Approved You can Stake Now")
-          $(".tipBox").css("opacity", "1");
-          $("#stakeAmount").attr("disabled", "true");
-  
-          $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
-          $("#maxButton").hide();
-          console.log($("#maxButton"))
-      } else {
-          let a = $("#stakeAmount").val();
-          let address = window.walletAddress;
-          if (Number(a) > userBalance) {
-              return false;
-          }
-          a = (a)*(10**decimals);
-  
-          await tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
-              hideLoader();
-              console.log("approve completed");
-              $("#notifictionMessage").html("Token Is Approved You can Stake Now")
-              $(".tipBox").css("opacity", "1");
-              $("#stakeAmount").attr("disabled", "true");
-              $("#maxButton").hide();
-              $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
-              setTimeout(() => {
-                $("#notifictionMessage").html(originalValue + " Token Staked Successfully")
-                $(".tipBox").css("opacity", "1");
+    let a = $("#stakeAmount").val();
+    let address = window.walletAddress;
+    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
+    if (Number(a) > userBalance) {
+        return false;
+    }
+    a = (a)*(10**decimals);
+    if (userApproved >= a) {
+        $("#notifictionMessage").html("Token Is Approved You can Stake Now")
+        $(".tipBox").css("opacity", "1");
+        $("#stakeAmount").attr("disabled", "true");
+
+        $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
+        $("#maxButton").hide();
+        console.log($("#maxButton"))
+    } else {
+        let a = $("#stakeAmount").val();
+        let address = window.walletAddress;
+        if (Number(a) > userBalance) {
+            return false;
+        }
+        a = (a)*(10**decimals);
+
+        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
+            .on('transactionHash', (hash) => {
+                showLoader("Approving Tokens")
+            })
+            .on('receipt', (receipt) => {
                 hideLoader();
-                balanceChecker(userStakedTokenIndex);
-                closeStake();
-            }, 15000)
-            
-      }
-    }finally{}
-  }
-  var info
-  async function test(){
-     info =  await tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, "122").send({ from: "0xC64F2262803d0533eFb5f7D63ca7c8f0640dae90", value: 0, })
-     console.log(info)
-  }
+                $("#notifictionMessage").html("Token Is Approved You can Stake Now")
+                $(".tipBox").css("opacity", "1");
+                $("#stakeAmount").attr("disabled", "true");
+                $("#maxButton").hide();
+                $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
+
+            }).on("error", (error) => {
+                hideLoader()
+                if (error.message.includes("User denied transaction signature")) {
+                    $("#notifictionMessage").html("User denied transaction signature")
+                    $(".tipBox").css("opacity", "1");
+                } else {
+                    $("#notifictionMessage").html("Your Approval failed, please try again")
+                    $(".tipBox").css("opacity", "1");
+                }
+            })
+    }
+}
+
 async function stake() {
 
     let a = $("#stakeAmount").val();

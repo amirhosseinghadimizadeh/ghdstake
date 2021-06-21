@@ -169,9 +169,10 @@ async function calcUserBalance() {
     $.getJSON(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`,
     async function (data) {
         ethPrice = Object.values(data)[0].usd;
+        var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
         tokenLiquidityPool=await window.FactoryInstance.methods.getPair(tokenInstance[userStakedTokenIndex]._address,wethAddres).call(); 
         totalETHInUniPool = Number(window.web3.utils.fromWei(await window.wethInstance.methods.balanceOf(tokenLiquidityPool).call()));
-        totalsushiInUniPool = Number(window.web3.utils.fromWei(await tokenInstance[userStakedTokenIndex].methods.balanceOf(tokenLiquidityPool).call()));
+        totalsushiInUniPool = Number((await tokenInstance[userStakedTokenIndex].methods.balanceOf(tokenLiquidityPool).call())/10**decimals);
         totalLPSupply = Number(window.web3.utils.fromWei(await tokenInstance[userStakedTokenIndex].methods.totalSupply().call()));
         console.log(ethPrice+" ethPrice");
         console.log(tokenLiquidityPool+ " tokenLiquidityPool");

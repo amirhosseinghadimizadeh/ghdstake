@@ -302,7 +302,7 @@ async function approve() {
           }
           a = (a)*(10**decimals);
   
-          tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**decimals).send({ from: address, value: 0, }).then(function(result){
+          tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, }).then(function(result){
               hideLoader();
               console.log("approve completed");
               $("#notifictionMessage").html("Token Is Approved You can Stake Now")

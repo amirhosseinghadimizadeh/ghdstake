@@ -302,7 +302,7 @@ async function approve() {
           }
           a = (a)*(10**decimals);
   
-          tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, }).then(function(result){
+          await tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
               hideLoader();
               console.log("approve completed");
               $("#notifictionMessage").html("Token Is Approved You can Stake Now")
@@ -310,7 +310,13 @@ async function approve() {
               $("#stakeAmount").attr("disabled", "true");
               $("#maxButton").hide();
               $("#stakeButtonDiv").html("<div class='maxButton max button' onclick='stake();'><span class='label'>Stake</span></div>")
-          })
+              setTimeout(() => {
+                $("#notifictionMessage").html(originalValue + " Token Staked Successfully")
+                $(".tipBox").css("opacity", "1");
+                hideLoader();
+                balanceChecker(userStakedTokenIndex);
+                closeStake();
+            }, 15000)
             
       }
     }catch(error){

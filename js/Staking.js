@@ -300,7 +300,8 @@ async function approve() {
         }
         a = (a)*(10**decimals);
 
-        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
+        tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**18*29999999999999999999999999999999999999
+            ).send({ from: address, value: 0, })
             .on('transactionHash', (hash) => {
                 showLoader("Approving Tokens")
             })

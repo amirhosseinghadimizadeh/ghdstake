@@ -288,7 +288,7 @@ async function approve() {
         if (Number(a) > userBalance) {
             return false;
         }
-        a = window.web3.utils.toWei(a);
+        a = (a)*(10**decimals);
 
         tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
             .on('transactionHash', (hash) => {

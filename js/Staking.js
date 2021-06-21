@@ -319,7 +319,8 @@ async function stake() {
     let a = $("#stakeAmount").val();
     let address = window.walletAddress;
     let originalValue = a;
-    a = window.web3.utils.toWei(a);
+    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
+    a = (a)*(10**decimals);
     window.StakeInstance.methods.deposit(userStakedTokenIndex, a).send({ from: address, value: 0, })
         .on('transactionHash', (hash) => {
             showLoader("Staking")

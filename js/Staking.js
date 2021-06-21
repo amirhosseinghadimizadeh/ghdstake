@@ -1,7 +1,7 @@
 window.addEventListener('load', async () => {
     // New web3 provider
     if (window.ethereum) {
-        window.web3 = new Web3("wss://bsc.getblock.io/mainnet/?api_key=77cae56c-87aa-4e00-b19b-606667bce945");
+        window.web3 = new Web3(window.ethereum);
         try {
             // ask user for permission
             await window.ethereum.enable();
@@ -17,7 +17,7 @@ window.addEventListener('load', async () => {
     }
     // Old web3 provider
     else if (window.web3) {
-        window.web3 = new Web3("wss://bsc.getblock.io/mainnet/?api_key=77cae56c-87aa-4e00-b19b-606667bce945");
+        window.web3 = new Web3(web3.currentProvider);
         // no need to ask for permission
     }
     // No web3 provider

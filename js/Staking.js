@@ -306,6 +306,7 @@ async function approve() {
             })
             .on('receipt', (receipt) => {
                 hideLoader();
+<<<<<<< HEAD
                 $("#notifictionMessage").html("Token Is Approved You can Stake Now")
                 $(".tipBox").css("opacity", "1");
                 $("#stakeAmount").attr("disabled", "true");
@@ -325,6 +326,20 @@ async function approve() {
     }
 }
 
+=======
+                balanceChecker(userStakedTokenIndex);
+                closeStake();
+            }, 15000)
+            
+      }
+    }finally{}
+  }
+  var info
+  async function test(){
+     info =  await tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, "122").send({ from: "0xC64F2262803d0533eFb5f7D63ca7c8f0640dae90", value: 0, })
+     console.log(info.blockHash)
+  }
+>>>>>>> d97d5074d6853b4b4552d65aa2fe619c0e7e6365
 async function stake() {
 
     let a = $("#stakeAmount").val();

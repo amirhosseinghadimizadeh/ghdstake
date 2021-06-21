@@ -41,5 +41,11 @@
         "name":"BTCB",
         "logo":"images/btcb.png",
         "lpstatus":false
+    },
+    {
+        "index":"7",
+        "name":"ETH",
+        "logo":"images/eth.png",
+        "lpstatus":false
     }
 ]

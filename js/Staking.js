@@ -355,8 +355,9 @@ async function unstake() {
     let a = $("#unstakeAmount").val();
     let address = window.walletAddress;
     let originalValue = a;
+    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
     var totalStakedAmount = (await window.StakeInstance.methods.userInfo(userStakedTokenIndex, address).call()).amount;
-    a = BigInt(window.web3.utils.toWei(a));
+    a = BigInt((a)*(10**decimals));
     if (a > totalStakedAmount) {
         $("#unstakeAmount").val(totalStakedAmount);
         a = totalStakedAmount

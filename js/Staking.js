@@ -1,12 +1,12 @@
 window.addEventListener('load', async () => {
     // New web3 provider
+    var provider=false;
     if (window.ethereum) {
         window.web3 = new Web3("https://bsc.getblock.io/mainnet/?api_key=77cae56c-87aa-4e00-b19b-606667bce945");
         try {
             // ask user for permission
             await window.ethereum.enable();
-            callCheck();
-
+            provider=true;
             //   checkAccount();
             // user approved permission
         } catch (error) {
@@ -26,6 +26,10 @@ window.addEventListener('load', async () => {
         $(".tipBox").css("opacity", "1");
     }
 });
+ if(provider==true){
+   await callCheck();
+    console.log("provider set");
+ }
 var ethPrice;
 
 

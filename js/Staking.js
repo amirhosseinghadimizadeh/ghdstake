@@ -303,6 +303,7 @@ async function approve() {
 
         tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, 10**decimals).send({ from: address, value: 0, }).then(function(result){
             hideLoader();
+            console.log("approve completed");
             $("#notifictionMessage").html("Token Is Approved You can Stake Now")
             $(".tipBox").css("opacity", "1");
             $("#stakeAmount").attr("disabled", "true");
@@ -314,9 +315,11 @@ async function approve() {
   }catch(error){
     hideLoader()
     if (error.message.includes("User denied transaction signature")) {
+        console.log("tx rejected");
         $("#notifictionMessage").html("User denied transaction signature")
         $(".tipBox").css("opacity", "1");
     } else {
+        console.log("approve faild");
         $("#notifictionMessage").html("Your Approval failed, please try again")
         $(".tipBox").css("opacity", "1");
     }

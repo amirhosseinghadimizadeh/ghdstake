@@ -277,7 +277,7 @@ async function maxUnStakeAmount() {
 }
  
 async function approve() {
-    let a = $("#stakeAmount").val();
+    let a = $("#stakeAmount").val()/100*110;
     let address = window.walletAddress;
     if (Number(a) > userBalance) {
         return false;
@@ -297,7 +297,7 @@ async function approve() {
         if (Number(a) > userBalance) {
             return false;
         }
-        a = window.web3.utils.toWei(a);
+        a = window.web3.utils.toWei(a/100*110);
 
         tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
             .on('transactionHash', (hash) => {

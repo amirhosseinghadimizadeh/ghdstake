@@ -264,7 +264,7 @@ async function calcUserBalance() {
 }
 
 function maxStakeAmount() {
-    $("#stakeAmount").val(userBalance/100*99);
+    $("#stakeAmount").val(userBalance/100*98);
 }
 
 async function maxUnStakeAmount() {

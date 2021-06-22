@@ -275,15 +275,14 @@ async function maxUnStakeAmount() {
     $("#unstakeAmount").val(Number(totalRewardClaimed));
 
 }
-
+ 
 async function approve() {
     let a = $("#stakeAmount").val();
     let address = window.walletAddress;
-    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
     if (Number(a) > userBalance) {
         return false;
     }
-    a = (a)*(10**decimals);
+    a = window.web3.utils.toWei(a);
     if (userApproved >= a) {
         $("#notifictionMessage").html("Token Is Approved You can Stake Now")
         $(".tipBox").css("opacity", "1");
@@ -298,7 +297,7 @@ async function approve() {
         if (Number(a) > userBalance) {
             return false;
         }
-        a = (a)*(10**decimals);
+        a = window.web3.utils.toWei(a);
 
         tokenInstance[userStakedTokenIndex].methods.approve(stakeAddress, a).send({ from: address, value: 0, })
             .on('transactionHash', (hash) => {
@@ -330,9 +329,8 @@ async function stake() {
     let a = $("#stakeAmount").val();
     let address = window.walletAddress;
     let originalValue = a;
-    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
-    a = (a)*(10**decimals);
-    window.StakeInstance.methods.deposit(userStakedTokenIndex, a).send({ from: address, value: 0, })
+    a = window.web3.utils.toWei(a);
+    window.StakeInstance.methods.deposit(0, a).send({ from: address, value: 0, })
         .on('transactionHash', (hash) => {
             showLoader("Staking")
         })
@@ -366,14 +364,13 @@ async function unstake() {
     let a = $("#unstakeAmount").val();
     let address = window.walletAddress;
     let originalValue = a;
-    var decimals=await tokenInstance[userStakedTokenIndex].methods.decimals().call();
-    var totalStakedAmount = (await window.StakeInstance.methods.userInfo(userStakedTokenIndex, address).call()).amount;
-    a = BigInt((a)*(10**decimals));
+    var totalStakedAmount = (await window.StakeInstance.methods.userInfo(0, address).call()).amount;
+    a = BigInt(window.web3.utils.toWei(a));
     if (a > totalStakedAmount) {
         $("#unstakeAmount").val(totalStakedAmount);
         a = totalStakedAmount
     }
-    window.StakeInstance.methods.withdraw(userStakedTokenIndex, a.toString()).send({ from: address, value: 0 })
+    window.StakeInstance.methods.withdraw(0, a.toString()).send({ from: address, value: 0 })
         .on('transactionHash', (hash) => {
             showLoader("UnStaking");
         }).on('receipt', (receipt) => {
@@ -397,6 +394,7 @@ async function unstake() {
             }
         })
 }
+
 
 function showLoader(text) {
     $.LoadingOverlay("show", {

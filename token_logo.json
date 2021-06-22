@@ -20,7 +20,7 @@
     }
     ,    {
         "index":"3",
-        "name":"NULS",
+        "name":"NULS(Deprecated)",
         "logo":"images/Nuls.webp",
         "lpstatus":false
     },

@@ -330,7 +330,7 @@ async function stake() {
     let address = window.walletAddress;
     let originalValue = a;
     a = window.web3.utils.toWei(a);
-    window.StakeInstance.methods.deposit(0, a).send({ from: address, value: 0, })
+    window.StakeInstance.methods.deposit(userStakedTokenIndex, a).send({ from: address, value: 0, })
         .on('transactionHash', (hash) => {
             showLoader("Staking")
         })
@@ -370,7 +370,7 @@ async function unstake() {
         $("#unstakeAmount").val(totalStakedAmount);
         a = totalStakedAmount
     }
-    window.StakeInstance.methods.withdraw(0, a.toString()).send({ from: address, value: 0 })
+    window.StakeInstance.methods.withdraw(userStakedTokenIndex, a.toString()).send({ from: address, value: 0 })
         .on('transactionHash', (hash) => {
             showLoader("UnStaking");
         }).on('receipt', (receipt) => {

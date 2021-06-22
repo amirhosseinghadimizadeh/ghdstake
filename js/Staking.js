@@ -92,7 +92,7 @@ async function balanceChecker(index) {
     userStake =userMasterChefBalance.amount/10**decimals;
     userBalance = (await tokenInstance[index].methods.balanceOf(address).call())/10**decimals;
     userApproved = BigInt(await tokenInstance[index].methods.allowance(address, stakeAddress).call());
-    totalStakeAmount =await tokenInstance[index].methods.balanceOf(stakeAddress).call()/10**decimals
+    totalStakeAmount =await tokenInstance[index].methods.balanceOf(stakeAddress).call()/10**decimals;
     $("#userBalance").html(Number(userBalance).toFixed(4));
     $("#userStake").html(Number(userStake).toFixed(4));
     $("#userTotal").html((Number(userBalance) + Number(userStake)).toFixed(4));

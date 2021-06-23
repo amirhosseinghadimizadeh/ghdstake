@@ -44,7 +44,7 @@
     },
     {
         "index":"7",
-        "name":"ETH(Deprecated)",
+        "name":"ETH",
         "logo":"images/eth.png",
         "lpstatus":false
     },

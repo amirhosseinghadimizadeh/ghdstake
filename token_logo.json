@@ -2,68 +2,8 @@
 
     {
         "index":"0",
-        "name":"GHD(Deprecated)",
+        "name":"GHD",
         "logo":"images/Giftedhands.png",
         "lpstatus":false
-    },
-    {
-        "index":"1",
-        "name":"GHD-WGHD(Deprecated)",
-        "logo":"images/dodolp.svg",
-        "lpstatus":false
-    },
-    {
-        "index":"2",
-        "name":"GHD-BNB(Deprecated)",
-        "logo":"images/pancakelp.png",
-        "lpstatus":true
     }
-    ,    {
-        "index":"3",
-        "name":"NULS(Deprecated)",
-        "logo":"images/Nuls.webp",
-        "lpstatus":false
-    },
-    {
-        "index":"4",
-        "name":"NULS-BNB(Deprecated)",
-        "logo":"images/pancakelp.png",
-        "lpstatus":true
-    },
-    {
-        "index":"5",
-        "name":"CAKE(Deprecated)",
-        "logo":"images/pancakelp.png",
-        "lpstatus":false
-    },
-    {
-        "index":"6",
-        "name":"BTCB(Deprecated)",
-        "logo":"images/btcb.png",
-        "lpstatus":false
-    },
-    {
-        "index":"7",
-        "name":"ETH(Deprecated)",
-        "logo":"images/eth.png",
-        "lpstatus":false
-    },
-    {
-        "index":"8",
-        "name":"BUSD(Deprecated)",
-        "logo":"images/busd.png",
-        "lpstatus":false
-    },
-    {
-        "index":"9",
-        "name":"BUNNY(Deprecated)",
-        "logo":"images/bunny.png",
-        "lpstatus":false
-    }, {
-        "index":"10",
-        "name":"USDT(Deprecated)",
-        "logo":"images/usdt.png",
-        "lpstatus":false
-    }
-    
 ]

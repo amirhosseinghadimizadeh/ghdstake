@@ -7,8 +7,6 @@ window.addEventListener('load', async () => {
             await window.ethereum.enable();
             callCheck();
 
-            //   checkAccount();
-            // user approved permission
         } catch (error) {
             // user rejected permission
             $("#notifictionMessage").html("User Rejected to connect with Metamask")

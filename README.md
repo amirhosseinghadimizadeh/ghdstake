@@ -1,2 +1,2 @@
 # staking-interface
-for friend
+for friend:)

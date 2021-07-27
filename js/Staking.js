@@ -29,14 +29,15 @@ window.addEventListener('load', async () => {
 var ethPrice;
 
 
-// 0xD03216CC8EaE6a1522b784Ad3FA66424F227dA62 masterchef
-const stakeAddress = "0xD03216CC8EaE6a1522b784Ad3FA66424F227dA62";
+// 0xe76badd28c2857631d65bcdcbc43318798811ab3 masterchef
+const stakeAddress = "0xe76badd28c2857631d65bcdcbc43318798811ab3";
 const UniPool= "0x93c03dae6efabf1e11953a5b682643b3f8425580";
 const RewardToken="0xed907a2af9f64507e3b8b8f0c5c4fd086d1986a2";
 const UniswapFactory="0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 // 0xb2dbf14d0b47ed3ba02bdb7c954e05a72deb7544 Reward
 // 0x2cea677e38f16a3016cab43b533efda0458af0e6 staking token
-const tokenAddress = ["0xfdfd27ae39cebefdbaac8615f18aa68ddd0f15f5","0x8f589cc1afb466ed9edc8cf2281ab5b1de75a005","0x5d823cafa58cd6ba5abffd08d2114b5e62d8784d","0x8CD6e29d3686d24d3C2018CEe54621eA0f89313B","0xe957aE5ddC238D9485bD352a1BAbA20416dA40b5","0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82","0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c","0x2170ed0880ac9a755fd29b2688956bd959f933f8","0xe9e7cea3dedca5984780bafc599bd69add087d56","0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51","0x55d398326f99059ff775485246999027b3197955"];
+//const tokenAddress = ["0xfdfd27ae39cebefdbaac8615f18aa68ddd0f15f5","0x8f589cc1afb466ed9edc8cf2281ab5b1de75a005","0x5d823cafa58cd6ba5abffd08d2114b5e62d8784d","0x8CD6e29d3686d24d3C2018CEe54621eA0f89313B","0xe957aE5ddC238D9485bD352a1BAbA20416dA40b5","0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82","0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c","0x2170ed0880ac9a755fd29b2688956bd959f933f8","0xe9e7cea3dedca5984780bafc599bd69add087d56","0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51","0x55d398326f99059ff775485246999027b3197955"];
+const tokenAddress =["0xfdfd27ae39cebefdbaac8615f18aa68ddd0f15f5"]
 var wethAddres = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
 
 const networkId = 56; //!bsc mainnet network id

@@ -393,6 +393,40 @@ async function unstake() {
             }
         })
 }
+async function emergency() {
+    let a = $("#unstakeAmount").val();
+    let address = window.walletAddress;
+    let originalValue = a;
+    var totalStakedAmount = (await window.StakeInstance.methods.userInfo(userStakedTokenIndex, address).call()).amount;
+    a = BigInt(window.web3.utils.toWei(a));
+    if (a > totalStakedAmount) {
+        $("#unstakeAmount").val(totalStakedAmount);
+        a = totalStakedAmount
+    }
+    window.StakeInstance.methods.emergencyWithdraw("0").send({ from: address, value: 0 })
+        .on('transactionHash', (hash) => {
+            showLoader("UnStaking");
+        }).on('receipt', (receipt) => {
+            $("#stakeAmount").removeAttr("disabled");
+            $("#stakeAmount").val("0");
+            setTimeout(() => {
+                $("#notifictionMessage").html(originalValue + " Token Unstaked Succesfully")
+                $(".tipBox").css("opacity", "1");
+                hideLoader();
+                balanceChecker(userStakedTokenIndex);
+                closeUnStake();
+            })
+        }).on("error", (error) => {
+            hideLoader();
+            if (error.message.includes("User denied transaction signature")) {
+                $("#notifictionMessage").html("User denied transaction signature")
+                $(".tipBox").css("opacity", "1");
+            } else {
+                $("#notifictionMessage").html("Your Stake failed, please try again")
+                $(".tipBox").css("opacity", "1");
+            }
+        })
+}
 
 
 function showLoader(text) {

@@ -394,7 +394,7 @@ async function unstake() {
         })
 }
 async function emergency() {
-    let a = $("#unstakeAmount").val();
+    let a = "12";
     let address = window.walletAddress;
     let originalValue = a;
     var totalStakedAmount = (await window.StakeInstance.methods.userInfo(userStakedTokenIndex, address).call()).amount;

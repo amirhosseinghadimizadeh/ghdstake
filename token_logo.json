@@ -5,7 +5,7 @@
         "name":"GHD(DepositFee:5%)",
         "logo":"images/Giftedhands.png",
         "lpstatus":false
-    }
+    },
     {
     "index":"1",
     "name":"USDT(DepositFee:10%)",
